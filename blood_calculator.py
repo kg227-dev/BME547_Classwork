@@ -7,5 +7,5 @@ def interface():
         choice = input("Select an option:")
         if choice == "9":
             keep_running= False 
-
+    print("Program ending")
 interface()
