@@ -8,10 +8,16 @@ def main_driver():
     db.append(create_patient_entry("Bob Boyles", 2, 45))
     db.append(create_patient_entry("Chris Chou", 3, 52))
     print(db)
-    add_test_to_patient(db, 4, "HDL", 120)
+    add_test_to_patient(db, 1, "HDL", 120)
+    add_test_to_patient(db, 2, "LDL", 100)
     room_numbers = ["103", "232", "333"]
     print(db)
     print_directory(db, room_numbers)
+
+def get_test_value(mrn, test_name):
+    patient = get_patient_entry(db, mrn)
+    if patient == False: 
+        print("Bad entry")
 
 def print_directory(db, room_numbers):
     for i, patient in enumerate(db):
