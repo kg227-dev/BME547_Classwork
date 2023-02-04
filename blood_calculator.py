@@ -90,4 +90,5 @@ def TotalChol_output(TotalChol_value, TotalChol_analy):
     print("The LDL result of {} is considered {}".format(TotalChol_value, TotalChol_analy))
     return
 
-interface()
+if __name__ == "__main__":
+    interface()
