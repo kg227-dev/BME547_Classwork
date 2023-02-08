@@ -15,7 +15,7 @@ def diagnosis_input():
     print("3 - Community-acquired pneumonia")
     print("4 - Pharyngitis/tonsilitis")
     diagnosis = int(input("Enter a number: "))
-    return diagnosis 
+    return diagnosis
 
 
 def weight_input():

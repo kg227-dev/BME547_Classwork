@@ -18,7 +18,7 @@ def main_driver():
 
 def get_test_value(mrn, test_name):
     patient = get_patient_entry(db, mrn)
-    if patient == False: 
+    if patient == False:
         print("Bad entry")
 
 

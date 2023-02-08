@@ -98,7 +98,8 @@ def LDL_output(LDL_value, LDL_analy):
 
 
 def TotalChol_output(TotalChol_value, TotalChol_analy):
-    print("The LDL result of {} is considered {}".format(TotalChol_value, TotalChol_analy))
+    print("The LDL result of {} is considered {}".format(
+        TotalChol_value, TotalChol_analy))
     return
 
 
