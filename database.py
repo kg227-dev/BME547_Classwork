@@ -18,7 +18,7 @@ def main_driver():
 
 def get_test_value(mrn, test_name):
     patient = get_patient_entry(db, mrn)
-    if patient == False:
+    if patient is False:
         print("Bad entry")
 
 
@@ -36,7 +36,7 @@ def get_patient_entry(db, mrn_to_find):
 
 def add_test_to_patient(db, mrn_to_find, test_name, test_value):
     patient = get_patient_entry(db, mrn_to_find)
-    if patient == False:
+    if patient is False:
         print("Bad entry")
     else:
         patient[3].append([test_name, test_value])
