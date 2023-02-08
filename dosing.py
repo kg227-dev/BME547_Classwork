@@ -4,6 +4,8 @@
     NOTE:  This is a programming example, and should not be used for any
              type of medical treatment or diagnostics.
 """
+
+
 def diagnosis_input():
     print("Day One Dosing Guidelines")
     print("")
@@ -13,7 +15,8 @@ def diagnosis_input():
     print("3 - Community-acquired pneumonia")
     print("4 - Pharyngitis/tonsilitis")
     diagnosis = int(input("Enter a number: "))
-    return diagnosis 
+    return diagnosis
+
 
 def weight_input():
     print("PATIENT WEIGHT")
@@ -22,19 +25,22 @@ def weight_input():
     weight_input = input("Enter weight: ")
     return weight_input
 
+
 def weight_parse(weight_input):
     weight_data = weight_input.split(" ")
     weight = float(weight_data[0])
     units = weight_data[1]
-    if units== 'lb':
+    if units == 'lb':
         weight = weight/2.205
     return weight
+
 
 def calculate_dosage(diagnosis, weight):
     dosages_mg_per_kg = [30, 10, 10, 12]
     dosage_mg_per_kg = dosages_mg_per_kg[diagnosis-1]
     dosage_mg_first_day = weight * dosage_mg_per_kg
     return dosage_mg_first_day
+
 
 def dosage_output(weight, dosage_mg_first_day):
     print("CORRECT DOSAGE")
