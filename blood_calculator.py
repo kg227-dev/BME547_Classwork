@@ -9,10 +9,10 @@ def interface():
         print("9 - Quit")
         choice = input("Select an option: ")
         if choice == "9":
-            keep_running= False
+            keep_running = False
         elif choice == "1":
             HDL_driver()
-        elif choice =="2":
+        elif choice == "2":
             LDL_driver()
         elif choice == "3":
             TotalChol_driver()
@@ -58,7 +58,7 @@ def TotalChol_input():
 def HDL_analysis(HDL_int):
     if HDL_int >= 60:
         answer = "Normal"
-    elif 40 <= HDL_int <60:
+    elif 40 <= HDL_int < 60:
         answer = "Borderline Low"
     else:
         answer = "Low"
@@ -68,9 +68,9 @@ def HDL_analysis(HDL_int):
 def LDL_analysis(LDL_int):
     if LDL_int >= 190:
         answer = "Very High"
-    elif 160 <= LDL_int <190:
+    elif 160 <= LDL_int < 190:
         answer = "High"
-    elif 130 <= LDL_int <160:
+    elif 130 <= LDL_int < 160:
         answer = "Borderline High"
     else:
         answer = "Normal"
@@ -84,7 +84,7 @@ def TotalChol_analysis(TotalChol_int):
         answer = "Borderline High"
     else:
         answer = "High"
-    return answer 
+    return answer
 
 
 def HDL_output(HDL_value, HDL_analy):
@@ -104,4 +104,3 @@ def TotalChol_output(TotalChol_value, TotalChol_analy):
 
 if __name__ == "__main__":
     interface()
-    
