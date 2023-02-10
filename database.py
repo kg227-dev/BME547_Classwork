@@ -42,6 +42,18 @@ def add_test_to_patient(db, mrn_to_find, test_name, test_value):
         patient[3].append([test_name, test_value])
     return
 
+def get_test_value_from_test_list(test_list, test_name):
+    for test in test_list:
+        if test[0] == test_name:
+            return test[1]
+    return False
+
+
+def get_test_result(db, mrn, test_name):
+    patient = get_patient_entry(db, mrn)
+    test_value = get_test_value_from_test_list(patient[3], test_name)
+    return test_value
+
 
 if __name__ == "__main__":
     main_driver()
