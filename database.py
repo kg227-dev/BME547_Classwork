@@ -1,7 +1,7 @@
 def create_patient_entry(first_name, last_name, patient_mrn, patient_age):
-    #new_patient = [patient_name, patient_mrn, patient_age, []]
-    new_patient = {'First Name': first_name, "Last Name": last_name, 
-                   "MRN": patient_mrn, "Age": patient_age, 
+    # new_patient = [patient_name, patient_mrn, patient_age, []]
+    new_patient = {'First Name': first_name, "Last Name": last_name,
+                   "MRN": patient_mrn, "Age": patient_age,
                    "Tests": []}
     return new_patient
 
@@ -15,12 +15,11 @@ def main_driver():
     print_database(db)
     add_test_to_patient(db, 1, "HDL", 120)
     add_test_to_patient(db, 2, "LDL", 100)
-    #room_numbers = ["103", "232", "333"]
-    #print(db)
-    #print_directory(db, room_numbers)
-    print(get_test_result(db,2, "LDL"))
+    # room_numbers = ["103", "232", "333"]
+    # print(db)
+    # print_directory(db, room_numbers)
+    print(get_test_result(db, 2, "LDL"))
     return
-
 
 
 def get_test_value(mrn, test_name):
@@ -51,6 +50,7 @@ def add_test_to_patient(db, mrn_to_find, test_name, test_value):
         patient["Tests"].append([test_name, test_value])
     return
 
+
 def get_test_value_from_test_list(test_list, test_name):
     for test in test_list:
         if test[0] == test_name:
@@ -67,10 +67,11 @@ def get_test_result(db, mrn, test_name):
 def get_full_name(patient):
     return "{} {}".format(patient['First Name'], patient['Last Name'])
 
+
 def print_database(db):
     for patient in db.values():
-        print("MRN: {}, Full Name: {}, Age: {}".format(patient["MRN"], 
-                                                       get_full_name(patient), 
+        print("MRN: {}, Full Name: {}, Age: {}".format(patient["MRN"],
+                                                       get_full_name(patient),
                                                        patient["Age"]))
 
 
