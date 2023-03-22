@@ -11,11 +11,12 @@ The "tests" list will be a series of tuples that contain the test
 name and test result
 """
 
-#create global variable to hold database
+# create global variable to hold database
 db = {}
 
-#create an instance of the Flask server
+# create an instance of the Flask server
 app = Flask(__name__)
+
 
 def add_patient_to_db(patient_id, patient_name, blood_type):
     """ Adds a new patient dictionary to the database
@@ -35,13 +36,14 @@ def add_patient_to_db(patient_id, patient_name, blood_type):
     Returns:
         None
     """
-    new_patient = {"id" : patient_id,
-                   "name" : patient_name, 
-                   "blood_type" : blood_type,
+    new_patient = {"id": patient_id,
+                   "name": patient_name,
+                   "blood_type": blood_type,
                    "tests": []}
-    
+
     db[id] = new_patient
     print(db)
+
 
 def add_test_to_db(patient_id, test_name, test_value):
     """Adds test result for a specific patient.
@@ -59,6 +61,7 @@ def add_test_to_db(patient_id, test_name, test_value):
     """
     db[patient_id]["tests"].appends((test_name, test_value))
     print(db)
+
 
 @app.route("/new_patient", methods=["POST"])
 def post_new_patient():
@@ -84,6 +87,7 @@ def post_new_patient():
     answer, status_code = new_patient_driver(in_data)
     # Return a response
     return jsonify(answer), status_code
+
 
 def new_patient_driver(in_data):
     """Implements the '/new_patient' route
@@ -115,6 +119,7 @@ def new_patient_driver(in_data):
     # Return an answer
     return "Patient successfully added", 200
 
+
 def validate_input_data_generic(in_data, expected_keys, expected_types):
     """Validates that input data is a dictionary with correct information
     This function receives the data that was sent with a POST request.  It
@@ -144,6 +149,7 @@ def validate_input_data_generic(in_data, expected_keys, expected_types):
             return "Key {} has the incorrect value type".format(key)
     return True
 
+
 @app.route("/add_test", methods=["POST"])
 def post_add_test():
     """POST route to receive information about a test to add to a patient
@@ -167,6 +173,7 @@ def post_add_test():
     answer, status_code = add_test_driver(in_data)
     return jsonify(answer), status_code
 
+
 def does_patient_exist_in_db(patient_id):
     """Determines whether a patient exists in the database based on a given id
     number
@@ -183,6 +190,7 @@ def does_patient_exist_in_db(patient_id):
         return True
     else:
         return False
+
 
 def add_test_driver(in_data):
     """Implements the '/add_test' route
@@ -303,10 +311,6 @@ def validate_patient_id_from_get(patient_id):
     return True
 
 
-if __name__ == '__main__':
-    logging.basicConfig(filename="server.log", filemode='w')
-    app.run()
-
 def validate_input_data(in_data):
     if type(in_data) is not dict:
         return "Input is not a dictionary"
@@ -318,6 +322,7 @@ def validate_input_data(in_data):
         if type(in_data[key]) is not value_type:
             return "Key {} has the incorrect value_type".format(key)
     return True
+
 
 def validate_input_data_add_test(in_data):
     if type(in_data) is not dict:
@@ -331,6 +336,7 @@ def validate_input_data_add_test(in_data):
             return "Key {} has the incorrect value_type".format(key)
     return True
 
-if __name__ == "__main__":
-    app.run()
 
+if __name__ == '__main__':
+    logging.basicConfig(filename="server.log", filemode='w')
+    app.run()
