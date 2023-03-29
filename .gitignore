@@ -3,3 +3,4 @@ myvenv
 .ipynb_checkpoints
 venv
 .pytest_cache
+secrets.py

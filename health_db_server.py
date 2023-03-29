@@ -1,5 +1,9 @@
 import logging
 from flask import Flask, request, jsonify
+from pymodm import connect
+from patientModel import Patient
+from pymodm import errors as pymodm_errors
+
 
 """
 Database Description: A dictionary of dictionaries.
@@ -17,6 +21,10 @@ db = {}
 # create an instance of the Flask server
 app = Flask(__name__)
 
+def init_server():
+    logging.basicConfig(filename = "server.log", filemode = "w")
+    connect("mongodb+srv://kushgulati:GWh5bUFzCEQBdxwi@bme547.vbubz5j.mongodb.net/"
+            "health_db_2023?retryWrites=true&w=majority")
 
 def add_patient_to_db(patient_id, patient_name, blood_type):
     """ Adds a new patient dictionary to the database
@@ -36,13 +44,11 @@ def add_patient_to_db(patient_id, patient_name, blood_type):
     Returns:
         None
     """
-    new_patient = {"id": patient_id,
-                   "name": patient_name,
-                   "blood_type": blood_type,
-                   "tests": []}
-
-    db[id] = new_patient
-    print(db)
+    new_patient = Patient(patient_id = patient_id,
+                   patient_name = patient_name,
+                   blood_type = blood_type,
+    )
+    new_patient.save()
 
 
 def add_test_to_db(patient_id, test_name, test_value):
@@ -338,5 +344,6 @@ def validate_input_data_add_test(in_data):
 
 
 if __name__ == '__main__':
+    init_server()
     logging.basicConfig(filename="server.log", filemode='w')
     app.run()

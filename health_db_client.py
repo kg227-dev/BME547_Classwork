@@ -6,6 +6,7 @@ patient = {"id": 1, "name": "David", "blood_type": "O+"}
 r = requests.post(server + "/new_patient", json=patient)
 print(r.status_code)
 print(r.text)
+"""
 
 patient = {"mrn": 2, "name": "John", "blood_type": "A+"}
 r = requests.post(server + "/new_patient", json=patient)
@@ -24,3 +25,4 @@ print(r.text)
 answer = r.json()
 for t in answer:
     print(t)
+"""
